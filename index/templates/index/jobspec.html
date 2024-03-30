@@ -1,0 +1,31 @@
+{% extends "index/base.html" %}
+
+{% block title %}About {{ object.name }}{% endblock title %}
+
+{% block body %}
+<section class="py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="row gx-4 gx-lg-5 align-items-center">
+            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." /></div>
+            <div class="col-md-6">
+                <div class="small mb-1">Dear {{ request.user.username }}</div>
+                <h1 class="display-5 fw-bolder">{{ object.name }}</h1>
+                <div class="fs-5 mb-5">
+                    <span class="text-decoration-line-through">Worth: </span>
+                    <span>{{ object.worth }}</span>
+                    <p class="small mb-1">Due: {{ object.due }}</p>
+                </div>
+                <p class="lead">{{ object.description }}</p>
+                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                    <form method = "POST" action = "{% url "jobs_spec" object.pk %}">
+                        {% csrf_token %}
+                        <div class="text-center" onclick = "addtocart()">
+                            <button type = "submit" class="btn btn-outline-dark mt-auto">Claim</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock body %}

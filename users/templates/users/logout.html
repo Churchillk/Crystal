@@ -1,0 +1,23 @@
+{% extends "users/base.html" %}
+
+{% block title %}Logout success{% endblock title %}
+
+{% block body %}
+<main class="form-signin w-100 m-auto">
+    <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+    <h1 class="h3 mb-3 fw-normal">Are you sure</h1>
+    <form method ="POST">
+      {% csrf_token %}
+      <div class = "container">
+        <a href = "" class = "btn btn-danger">no</a>
+        <button class="btn btn-success w-100 py-2" type="submit">Yes</button>
+      </div>
+    </form>
+    <small class="mt-5 mb-3 text-body-secondary">Log back in<a href = "{% url "login" %}">Sign in </a> </p>
+</main>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+{% endblock body %}
